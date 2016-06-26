@@ -111,7 +111,8 @@
       entry_index = entry_num - 1 #User input 1 is interpreted to entry index 0
       if address_book.entries[entry_index].nil?
          puts "------Entry ##{entry_num}--------"
-         puts "This entry is not existed!!!"
+         puts "This entry is not existed!!! Please pick another entry number"
+         view_by_number
       else
          puts "------Entry ##{entry_num}--------"
          puts address_book.entries[entry_index]
