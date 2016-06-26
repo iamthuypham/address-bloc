@@ -34,4 +34,19 @@
        expect(new_entry.email).to eq('augusta.king@lovelace.com')
      end
    end
+   describe "#remove_entry" do
+     let (:entries){AddressBook.remove_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')}
+     it "remove single entry from the address book" do
+       book = AddressBook.new
+
+       expect(book.entries.size).to eq(0)
+     end
+ 
+     it "remove the correct information from entries" do
+       book = AddressBook.new
+       remove_entry = book.entries[0]
+ 
+       expect(remove_entry).to eq(nil)
+     end
+   end
  end
