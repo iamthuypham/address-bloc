@@ -8,12 +8,13 @@
    end
  
   def main_menu
-     puts "Main Menu - #{address_book.entries.count} entries"
+     puts "------Main Menu - #{address_book.entries.count} entries------"
      puts "1 - View all entries"
      puts "2 - Create an entry"
      puts "3 - Search for an entry"
      puts "4 - Import entries from a CSV"
      puts "5 - Exit"
+     puts "6 - View entry by number"
      print "Enter your selection: "
  
      selection = gets.to_i
@@ -38,6 +39,9 @@
          when 5
            puts "Good-bye!"
            exit(0)
+         when 6
+           view_by_number
+           
          else
            system "clear"
            puts "Sorry, that is not a valid input"
@@ -100,5 +104,18 @@
          puts "#{selection} is not a valid input"
          entry_submenu(entry)
      end
+   end
+   def view_by_number
+      print "Entry number:"
+      entry_num = gets.chomp.to_i
+      entry_index = entry_num - 1 #User input 1 is interpreted to entry index 0
+      if address_book.entries[entry_index].nil?
+         puts "------Entry ##{entry_num}--------"
+         puts "This entry is not existed!!!"
+      else
+         puts "------Entry ##{entry_num}--------"
+         puts address_book.entries[entry_index]
+      end
+      main_menu
    end
  end
