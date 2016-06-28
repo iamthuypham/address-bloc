@@ -14,6 +14,7 @@
      puts "3 - Search for an entry"
      puts "4 - Import entries from a CSV"
      puts "5 - Exit"
+     puts "7 - Detonate"
      print "Enter your selection: "
  
      selection = gets.to_i
@@ -38,6 +39,9 @@
          when 5
            puts "Good-bye!"
            exit(0)
+        when 7
+          detonate
+          main_menu
          else
            system "clear"
            puts "Sorry, that is not a valid input"
@@ -174,5 +178,22 @@
          puts entry.to_s
          search_submenu(entry)
      end
+   end
+   def detonate
+      puts "Delete all entries. Are you sure? Y/N"
+      selection = gets.chomp.downcase
+      case selection
+        when "y"
+          address_book.entries.clear
+          puts "All entries are deleted"
+          main_menu
+        when "n"
+          system "clear"
+          main_menu
+        else
+          system "clear"
+          puts "#{selection} is not a valid input"
+          detonate
+      end
    end
  end
